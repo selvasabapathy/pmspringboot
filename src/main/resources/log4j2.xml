@@ -22,6 +22,7 @@
   </Appenders>
   <Loggers>
     <Logger name="home.sabapathy.pm" level="debug" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
       <AppenderRef ref="FileAppender"/>
     </Logger>
     <Root level="info">
