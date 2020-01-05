@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS `pm`.`user`;
+
+DROP DATABASE IF EXISTS `pm`;
+
+CREATE DATABASE IF NOT EXISTS `pm`;
+
+USE `pm`;
+
+CREATE TABLE IF NOT EXISTS `pm`.`user` (
+    user_id BIGINT NOT NULL AUTO_INCREMENT,
+    employee_id BIGINT NOT NULL,
+    first_name VARCHAR(32) NOT NULL,
+    last_name VARCHAR(32) NOT NULL,
+    PRIMARY KEY (user_id)
+);
