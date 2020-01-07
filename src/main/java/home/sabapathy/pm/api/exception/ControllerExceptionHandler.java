@@ -51,4 +51,9 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     public void userException(HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.NOT_FOUND.value());
     }
+
+    @ExceptionHandler(ProjectException.class)
+    public void projectException(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_FOUND.value());
+    }
 }

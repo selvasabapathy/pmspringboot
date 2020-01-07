@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class UserResponse {
-    long userId;
-    long employeeId;
-    String firstName;
-    String lastName;
+    private long userId;
+    private long employeeId;
+    private String firstName;
+    private String lastName;
 }

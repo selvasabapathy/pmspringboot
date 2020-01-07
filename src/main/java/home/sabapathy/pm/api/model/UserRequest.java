@@ -11,14 +11,14 @@ import javax.validation.constraints.NotNull;
 public class UserRequest {
 
     @NotNull(message = "User ID is required")
-    long userId;
+    private long userId;
 
     @NotNull(message = "Employee ID is required")
-    long employeeId;
+    private long employeeId;
 
     @NotEmpty(message = "Fill in First Name")
-    String firstName;
+    private String firstName;
 
     @NotEmpty(message = "Fill in Last Name")
-    String lastName;
+    private String lastName;
 }
