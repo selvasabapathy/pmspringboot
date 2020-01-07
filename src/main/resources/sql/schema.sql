@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `pm`.`parent_task`;
 DROP TABLE IF EXISTS `pm`.`project`;
 DROP TABLE IF EXISTS `pm`.`user`;
 
@@ -23,4 +24,10 @@ CREATE TABLE IF NOT EXISTS `pm`.`project` (
     end_date DATE NOT NULL,
     priority INT NOT NULL,
     PRIMARY KEY (project_id)
+);
+
+CREATE TABLE IF NOT EXISTS `pm`.`parent_task` (
+    parent_task_id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL,
+    PRIMARY KEY (parent_task_id)
 );
