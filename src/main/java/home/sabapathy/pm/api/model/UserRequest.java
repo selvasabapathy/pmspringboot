@@ -21,4 +21,10 @@ public class UserRequest {
 
     @NotEmpty(message = "Fill in Last Name")
     private String lastName;
+
+    @NotNull(message = "Project ID is required")
+    private long project_id;
+
+    @NotNull(message = "Task ID is required")
+    private long task_id;
 }

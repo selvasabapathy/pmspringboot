@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class ProjectResponse {
+public class TaskResponse {
 
-    private long projectId;
+    private long taskId;
     private String name;
-    private int taskCount;
     private Date startDate;
     private Date endDate;
     private int priority;
-    private boolean completed;
+    private boolean status;
 }

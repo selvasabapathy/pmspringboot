@@ -33,9 +33,9 @@ public class UserController {
     }
 
     @PutMapping("/users/{userId}")
-    public ResponseEntity<UserResponse> edit(@Valid @RequestBody UserRequest userRequest) {
+    public ResponseEntity<List<UserResponse>> edit(@Valid @RequestBody UserRequest userRequest) {
         log.debug("Edit the user... {}", userRequest);
-        return new ResponseEntity(userMapper.toUserResponse(userService.add(userMapper.toUser(userRequest))), HttpStatus.ACCEPTED);
+        return new ResponseEntity(userMapper.toUserResponse(userService.edit(userMapper.toUser(userRequest))), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/users/{userId}")
@@ -54,6 +54,6 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getUsers() {
         log.debug("Get all users...");
-        return new ResponseEntity(userMapper.toUserResponse(userService.getAll()), HttpStatus.OK);
+        return new ResponseEntity(userMapper.toUserResponse(userService.getAllWithUniqueEmployeeId()), HttpStatus.OK);
     }
 }

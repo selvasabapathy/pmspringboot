@@ -11,7 +11,13 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class ProjectRequest {
+public class TaskRequest {
+
+    @NotNull(message = "User ID is required")
+    private long taskId;
+
+    @NotNull(message = "Parent Task ID is required")
+    private long parentTaskId;
 
     @NotNull(message = "Project ID is required")
     private long projectId;
@@ -19,10 +25,8 @@ public class ProjectRequest {
     @NotEmpty(message = "Fill in Name")
     private String name;
 
-    private int taskCount;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date startDate;
+    private java.util.Date startDate;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
@@ -30,5 +34,5 @@ public class ProjectRequest {
     @Size(min = 1, max = 30, message = "Priority between 1 and 30")
     private int priority;
 
-    private boolean completed;
+    private boolean status;
 }
