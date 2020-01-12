@@ -19,12 +19,12 @@ public class Task {
     @Column(name = "task_id")
     private long taskId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_task_id")
     private ParentTask parentTask;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
     @Column(name = "name", nullable = false)
@@ -36,9 +36,9 @@ public class Task {
     @Column(name = "end_date", nullable = false)
     private Date endDate;
 
-    @Column(name = "priority")
+    @Column(name = "priority", nullable = false)
     private int priority;
 
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private boolean status;
 }

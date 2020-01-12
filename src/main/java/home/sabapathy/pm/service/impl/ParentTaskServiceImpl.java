@@ -44,7 +44,7 @@ public class ParentTaskServiceImpl implements ParentTaskService {
     @Override
     public ParentTask get(long parentTaskId) {
         log.debug("ParentTask not found for parentTaskId {}", parentTaskId);
-        return parentTaskRepository.findById(parentTaskId).orElseThrow(() -> new ParentTaskException(String.format("ParentTask not found for parentTaskId \"%s\"", parentTaskId)));
+        return parentTaskRepository.findById(parentTaskId).orElse(null);
     }
 
     @Override

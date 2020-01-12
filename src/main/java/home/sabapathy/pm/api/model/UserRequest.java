@@ -23,8 +23,8 @@ public class UserRequest {
     private String lastName;
 
     @NotNull(message = "Project ID is required")
-    private long project_id;
+    private long projectId;
 
     @NotNull(message = "Task ID is required")
-    private long task_id;
+    private long taskId;
 }
