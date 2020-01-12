@@ -8,6 +8,7 @@ import home.sabapathy.pm.api.model.UserRequest;
 import home.sabapathy.pm.api.model.UserResponse;
 import home.sabapathy.pm.service.api.ProjectService;
 import home.sabapathy.pm.service.api.UserService;
+import home.sabapathy.pm.service.entity.Project;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,16 +31,20 @@ public class ProjectController {
     @Autowired
     ProjectMapper projectMapper;
 
-    @PostMapping("/projects")
-    public ResponseEntity<UserResponse> add(@Valid @RequestBody ProjectRequest projectRequest) {
-        log.debug("Add an user... {}", projectRequest);
-        return new ResponseEntity(projectMapper.toProjectResponse(projectService.add(projectMapper.toProject(projectRequest))), HttpStatus.CREATED);
+    @PostMapping("/projects/{managerId}")
+    public ResponseEntity<UserResponse> add(@PathVariable long managerId, @Valid @RequestBody ProjectRequest projectRequest) {
+        log.debug("Add an user... {}, and managerId {}", projectRequest, managerId);
+        Project project = projectMapper.toProject(projectRequest);
+        project.setManagerId(managerId);
+        return new ResponseEntity(projectMapper.toProjectResponse(projectService.add(project)), HttpStatus.CREATED);
     }
 
-    @PutMapping("/projects/{projectId}")
-    public ResponseEntity<ProjectResponse> edit(@Valid @RequestBody ProjectRequest projectRequest) {
-        log.debug("Edit the project... {}", projectRequest);
-        return new ResponseEntity(projectMapper.toProjectResponse(projectService.add(projectMapper.toProject(projectRequest))), HttpStatus.ACCEPTED);
+    @PutMapping("/projects/{managerId}")
+    public ResponseEntity<ProjectResponse> edit(@PathVariable long managerId, @Valid @RequestBody ProjectRequest projectRequest) {
+        log.debug("Edit the project... {}, and managerId {}", projectRequest, managerId);
+        Project project = projectMapper.toProject(projectRequest);
+        project.setManagerId(managerId);
+        return new ResponseEntity(projectMapper.toProjectResponse(projectService.edit(project)), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/projects/{projectId}")

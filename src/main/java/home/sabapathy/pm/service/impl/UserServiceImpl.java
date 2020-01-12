@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -48,19 +49,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(long userId) {
-        log.debug("User not found for UserID {}", userId);
+        log.debug("Get User for UserID {}", userId);
         return userRepository.findById(userId).orElseThrow(() -> new UserException(String.format("User not found for UserID \"%s\"", userId)));
     }
 
     @Override
+    public Set<User> getManagers(long projectId) {
+        log.debug("Get Users for projectId {}", projectId);
+        return userRepository.findUsersByProject_ProjectId(projectId).stream().filter(Optional::isPresent).map(Optional::get).filter(user -> user.getTask() == null).collect(Collectors.toSet());
+    }
+
+    @Override
     public Set<User> getAllWithUniqueEmployeeId() {
-        log.debug("Get all users..");
-        return userRepository.findUsersWithUniqueEmployeeId();
+        Set<User> users = userRepository.findUsersWithUniqueEmployeeId();
+        log.debug("Get all users with unique EmployeeID: {}}", users);
+        return users;
     }
 
     @Override
     public List<User> getAll() {
-        log.debug("Get all users..");
-        return userRepository.findAll();
+        List<User> users = userRepository.findAll();
+        log.debug("Get all users: {}", users);
+        return users;
     }
 }

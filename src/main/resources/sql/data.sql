@@ -23,10 +23,10 @@ INSERT INTO `pm`.`task` (project_id, name, start_date, end_date, priority, statu
 INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id) VALUES (1, 'AngSpring', 'Manager', 1);
 INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id) VALUES (2, 'AngNodeJS', 'Manager', 2);
 INSERT INTO `pm`.`user` (employee_id, first_name, last_name) VALUES (3, 'Floating', 'Analyst');
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (4, 'Ang', 'Developer', 1, 2);
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (4, 'Ang', 'Developer', 2, 8);
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (5, 'Spring', 'Developer', 1, 3);
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (6, 'NodeJS', 'Developer', 2, 9);
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (7, 'Manual', 'Tester', 1, 4);
-INSERT INTO `pm`.`user` (employee_id, first_name, last_name, project_id, task_id) VALUES (8, 'Automation', 'Tester', 2, 11);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name, task_id) VALUES (4, 'Ang', 'Developer', 2);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name,task_id) VALUES (4, 'Ang', 'Developer', 8);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name,task_id) VALUES (5, 'Spring', 'Developer', 3);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name,task_id) VALUES (6, 'NodeJS', 'Developer', 9);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name,task_id) VALUES (7, 'Manual', 'Tester', 4);
+INSERT INTO `pm`.`user` (employee_id, first_name, last_name,task_id) VALUES (8, 'Automation', 'Tester', 11);
 INSERT INTO `pm`.`user` (employee_id, first_name, last_name) VALUES (9, 'Floating', 'Release');

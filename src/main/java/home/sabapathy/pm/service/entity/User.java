@@ -3,6 +3,7 @@ package home.sabapathy.pm.service.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.With;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -30,6 +31,7 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @With
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY)

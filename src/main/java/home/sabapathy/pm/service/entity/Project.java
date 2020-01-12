@@ -17,6 +17,9 @@ public class Project {
     @Column(name = "project_id")
     private long projectId;
 
+    @Transient
+    private long managerId;
+
     @Column(name = "name", nullable = false)
     private String name;
 

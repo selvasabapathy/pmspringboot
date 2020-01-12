@@ -51,9 +51,15 @@ public class UserController {
         return new ResponseEntity(userMapper.toUserResponse(userService.get(userId)), HttpStatus.OK);
     }
 
+    @GetMapping("/managers/{projectId}")
+    public ResponseEntity<List<UserResponse>> getManagers(@PathVariable long projectId) {
+        log.debug("Get all managers for projectId {}", projectId);
+        return new ResponseEntity(userMapper.toUserResponse(userService.getManagers(projectId)), HttpStatus.OK);
+    }
+
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getUsers() {
-        log.debug("Get all users...");
+        log.debug("Get all users...{}");
         return new ResponseEntity(userMapper.toUserResponse(userService.getAllWithUniqueEmployeeId()), HttpStatus.OK);
     }
 }

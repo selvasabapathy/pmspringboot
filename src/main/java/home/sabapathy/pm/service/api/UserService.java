@@ -14,6 +14,8 @@ public interface UserService {
 
     public User get(long userId);
 
+    public Set<User> getManagers(long projectId);
+
     public Set<User> getAllWithUniqueEmployeeId();
 
     public List<User> getAll();
