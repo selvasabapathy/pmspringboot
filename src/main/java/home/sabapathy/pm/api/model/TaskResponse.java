@@ -12,6 +12,7 @@ import java.util.Date;
 public class TaskResponse {
 
     private long taskId;
+    private long userId;
     private ParentTask parentTask;
     private Project project;
     private String name;

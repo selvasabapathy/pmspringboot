@@ -19,6 +19,9 @@ public class Task {
     @Column(name = "task_id")
     private long taskId;
 
+    @Transient
+    private long userId;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_task_id")
     private ParentTask parentTask;

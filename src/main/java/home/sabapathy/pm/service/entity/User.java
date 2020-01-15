@@ -35,7 +35,8 @@ public class User {
     private Project project;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "task_id")
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @With
     private Task task;
 }

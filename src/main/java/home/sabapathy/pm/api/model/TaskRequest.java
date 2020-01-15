@@ -14,6 +14,8 @@ public class TaskRequest {
     @NotNull(message = "User ID is required")
     private long taskId;
 
+    private long userId;
+
     @NotNull(message = "Parent Task ID is required")
     private long parentTaskId;
 
@@ -24,7 +26,7 @@ public class TaskRequest {
     private String name;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private java.util.Date startDate;
+    private Date startDate;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
