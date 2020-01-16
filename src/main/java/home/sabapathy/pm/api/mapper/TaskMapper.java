@@ -21,6 +21,8 @@ public interface TaskMapper {
     @Mapping(target = "project", source = "projectId", qualifiedByName = {"ProjectService", "findProjectById"})
     Task toTask(TaskRequest taskRequest);
 
+    @Mapping(target = "projectId", source = "project.projectId")
+    @Mapping(target = "parentTaskId", source = "parentTask.parentTaskId")
     TaskResponse toTaskResponse(Task task);
 
     List<TaskResponse> toTaskResponse(Set<Task> tasks);

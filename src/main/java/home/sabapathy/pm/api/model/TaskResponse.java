@@ -13,8 +13,8 @@ public class TaskResponse {
 
     private long taskId;
     private long userId;
-    private ParentTask parentTask;
-    private Project project;
+    private long parentTaskId;
+    private long projectId;
     private String name;
     private Date startDate;
     private Date endDate;

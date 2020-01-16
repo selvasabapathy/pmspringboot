@@ -32,6 +32,9 @@ public class TaskServiceImpl implements TaskService {
     UserRepository userRepository;
 
     private void linkTaskToUser(Task task, Task persistedTask) {
+        if (task.getUserId() == 0) {
+            return;
+        }
         User user = userRepository.findById(task.getUserId()).get();
         if (user.getTask() == null) {
             user.setTask(persistedTask);
@@ -65,10 +68,13 @@ public class TaskServiceImpl implements TaskService {
         log.debug("Saving the edited task... {}", task);
         Task persistedTask = taskRepository.save(task);
 
-        User currentUser = userRepository.findUsersByTask_TaskId(persistedTask.getTaskId()).get(0).get();
-        if (currentUser.getUserId() != task.getUserId()) {
-            unlinkTaskFromUser(currentUser);
-            linkTaskToUser(task, persistedTask);
+        List<Optional<User>> optionalUser = userRepository.findUsersByTask_TaskId(persistedTask.getTaskId());
+        if (!optionalUser.isEmpty()) {
+            User currentUser = optionalUser.get(0).get();
+            if (currentUser.getUserId() != task.getUserId()) {
+                unlinkTaskFromUser(currentUser);
+                linkTaskToUser(task, persistedTask);
+            }
         }
 
         return persistedTask;
@@ -78,9 +84,11 @@ public class TaskServiceImpl implements TaskService {
     public void delete(long taskId) {
         log.debug("Deleting the task with TaskID: {}", taskId);
 
-        User currentUser = userRepository.findUsersByTask_TaskId(taskId).get(0).get();
-        unlinkTaskFromUser(currentUser);
-
+        List<Optional<User>> optionalUser = userRepository.findUsersByTask_TaskId(taskId);
+        if (!optionalUser.isEmpty()) {
+            User currentUser = userRepository.findUsersByTask_TaskId(taskId).get(0).get();
+            unlinkTaskFromUser(currentUser);
+        }
         taskRepository.deleteById(taskId);
     }
 
