@@ -100,6 +100,13 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Set<Task> getAll(long projectId) {
-        return taskRepository.findTasksByProject_ProjectId(projectId);
+        Set<Task> tasks = taskRepository.findTasksByProject_ProjectId(projectId);
+        return tasks.stream().map(t -> {
+            List<Optional<User>> optionalUser = userRepository.findUsersByTask_TaskId(t.getTaskId());
+            if (!optionalUser.isEmpty()) {
+                t.setUserId(optionalUser.get(0).get().getUserId());
+            }
+            return t;
+        }).collect(Collectors.toSet());
     }
 }
