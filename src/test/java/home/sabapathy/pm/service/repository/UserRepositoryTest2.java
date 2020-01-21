@@ -4,6 +4,7 @@ import home.sabapathy.pm.service.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,6 +19,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 @ActiveProfiles("test")
 
 @SpringBootTest
+@EnableAutoConfiguration
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.AUTO_CONFIGURED)
 public class UserRepositoryTest2 {
 
@@ -50,6 +52,6 @@ public class UserRepositoryTest2 {
     @DisplayName("UserRepository - Find USERs with Unique Employee Id")
     public void testFindUsersWithUniqueEmployeeId() {
         Set<User> actualUsers = userRepository.findUsersWithUniqueEmployeeId();
-        assertThat("Check data.sql", actualUsers.size(), equalTo(6));
+        assertThat("Check data.sql", actualUsers.size(), equalTo(9));
     }
 }
