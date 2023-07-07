@@ -24,7 +24,7 @@
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<springfox.version>3.0.0</springfox.version>
 		<junit.version>5.5.2</junit.version>
-		<h2.version>2.1.210</h2.version>
+		<h2.version>2.2.220</h2.version>
 		<surefire.version>3.0.0-M4</surefire.version>
 	</properties>
 
